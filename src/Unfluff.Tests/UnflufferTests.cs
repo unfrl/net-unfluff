@@ -37,6 +37,7 @@ namespace Unfluff.Test
 
             Assert.NotNull(result);
             Assert.NotEmpty(result.Title);
+            Assert.NotEmpty(result.Language);
         }
 
         [Fact]

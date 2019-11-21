@@ -14,6 +14,7 @@ namespace Unfluff
 
         #region Extractors
 
+        private readonly LanguageExtractor _languageExtractor;
         private readonly TitleExtractor _titleExtractor;
         private readonly DescriptionExtractor _descriptionExtractor;
         private readonly FavIconExtractor _favIconExtractor;
@@ -28,6 +29,7 @@ namespace Unfluff
         public Unfluffer()
         {
             _htmlParser = new HtmlParser();
+            _languageExtractor = new LanguageExtractor();
             _titleExtractor = new TitleExtractor();
             _descriptionExtractor = new DescriptionExtractor();
             _favIconExtractor = new FavIconExtractor();
@@ -51,6 +53,7 @@ namespace Unfluff
             {
                 return new Payload
                 {
+                    Language = _languageExtractor.ExtractContent(document),
                     Title = _titleExtractor.ExtractContent(document),
                     Description = _descriptionExtractor.ExtractContent(document),
                     Image = _imageExtractor.ExtractContent(document),
